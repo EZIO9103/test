@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "description": "只使用 Roche 官方公开 API 的安装诊断版，用来确认插件能否正常安装和运行。",
   "author": "Ranni & ChatGPT",
-  "entry": "https://raw.githubusercontent.com/EZIO9103/test/main/plugin.js",
+  "entry": "https://raw.githubusercontent.com/EZIO9103/test/refs/heads/main/plugin.js",
   "hash": "",
   "permissions": [
     "memory:read",
