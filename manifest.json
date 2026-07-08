@@ -1,12 +1,15 @@
 {
-  "id": "roche-memory-core-online-mvp",
-  "name": "Memory Core MVP",
-  "version": "0.1.0",
-  "description": "线上简易版：前端拦截 Roche 发给模型的 chat input，并注入插件自建记忆。先用于验证注入链路。",
+  "id": "roche-memory-core-install-test",
+  "name": "Memory Core 安装测试",
+  "version": "0.1.1",
+  "description": "只使用 Roche 官方公开 API 的安装诊断版，用来确认插件能否正常安装和运行。",
   "author": "Ranni & ChatGPT",
   "entry": "https://raw.githubusercontent.com/EZIO9103/test/main/plugin.js",
   "hash": "",
   "permissions": [
+    "memory:read",
+    "memory:write",
+    "ai:chat",
     "storage",
     "ui"
   ]
