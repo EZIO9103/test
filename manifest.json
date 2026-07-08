@@ -4,7 +4,7 @@
   "version": "3.5.1-input-test",
   "description": "在原记忆清理器基础上加入实验功能：拦截主聊天请求并注入测试记忆，用于验证插件自建库能否进入 Roche input。",
   "author": "Ranni & ChatGPT",
-  "entry": "https://raw.githubusercontent.com/EZIO9103/roche-memory-token-cleaner/main/plugin.js",
+  "entry": "https://raw.githubusercontent.com/EZIO9103/test/refs/heads/main/plugin.js",
   "hash": "",
   "permissions": [
     "memory:read",
