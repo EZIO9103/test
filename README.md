@@ -1,45 +1,56 @@
-# Memory Core MVP
+# 记忆低Token清理器 3.5.1 input 注入测试版
 
-这是 Roche 插件格式，不是浏览器扩展。
+这是在原 Roche 记忆低 Token 清理器基础上加的实验版。
+
+新增功能：
+
+- 在“设置 → 实验：主聊天 input 注入测试”里开启实验注入。
+- 插件会尝试拦截 Roche 主聊天发出的 OpenAI 风格 `messages` 请求。
+- 向请求中插入一条测试记忆：`Ranni今天设定的测试暗号是 BLUE-CAT-778。`
+- 注入内容带标记：`ROCHE_MEMORY_CORE_MVP_INJECTED`，方便用中转站抓 input 搜索。
+
+## GitHub 结构
+
+```txt
+你的仓库/
+  manifest.json
+  plugin.js
+```
 
 ## 安装
 
-1. 把 `manifest.json` 和 `plugin.js` 上传到 GitHub 仓库根目录。
-2. 修改 `manifest.json` 里的 `entry`，改成你自己的 `plugin.js` Raw 链接。
-3. 在 Roche 插件安装处填写 `manifest.json` 的 Raw 链接。
-
-示例：
+Roche 里填 manifest.json 的 Raw 链接，例如：
 
 ```txt
 https://raw.githubusercontent.com/你的用户名/你的仓库/main/manifest.json
 ```
 
-## 测试
+`manifest.json` 里的 `entry` 必须改成你仓库里的 `plugin.js` Raw 链接。
 
-默认注入测试记忆：
+## 测试步骤
+
+1. 安装插件。
+2. 打开插件 App。
+3. 进入“设置 → 实验：主聊天 input 注入测试”。
+4. 开启“启用实验注入”。
+5. 保持“注入测试记忆”开启。
+6. 保存设置。
+7. 回到测试角色聊天，问：`我今天的测试暗号是什么？`
+8. 用中转站抓 input，搜索：
+   - `ROCHE_MEMORY_CORE_MVP_INJECTED`
+   - `插件自建记忆`
+   - `BLUE-CAT-778`
+
+如果 system 注入模式角色读不到，切换成：
 
 ```txt
-Ranni今天设定的测试暗号是 BLUE-CAT-778。
+user：拼到最新 user 前
 ```
 
-安装后打开插件面板，确认“注入：开 / 测试记忆：开”。
-然后找一个测试角色发：
+再测试一次。
 
-```txt
-我今天的测试暗号是什么？
-```
+## 注意
 
-再用中转站抓 Roche input，搜索：
+这是实验版，会猴子补丁 `fetch` 和 `XMLHttpRequest`。它不是 Roche 官方公开 hook，只用于验证“插件自建库能否注入主聊天 input”。
 
-```txt
-ROCHE_MEMORY_CORE_MVP_INJECTED
-插件自建记忆
-BLUE-CAT-778
-```
-
-如果模型答不出暗号，在插件面板把注入方式从 `system：插在最后一个 system 后` 改成 `user：拼到最新 user 消息前` 再测试。
-
-## 说明
-
-这个版本只测试：插件自建记忆能否通过前端请求拦截注入 Roche input。
-暂时不做自动总结、线下、向量、tag、时间适配。
+插件自己的 AI 清理请求已做 suppress，正常不会被测试记忆污染。

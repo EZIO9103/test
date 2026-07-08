@@ -1,10 +1,10 @@
 {
-  "id": "roche-memory-core-install-test",
-  "name": "Memory Core 安装测试",
-  "version": "0.1.1",
-  "description": "只使用 Roche 官方公开 API 的安装诊断版，用来确认插件能否正常安装和运行。",
+  "id": "memory-token-cleaner",
+  "name": "记忆低Token清理器",
+  "version": "3.5.1-input-test",
+  "description": "在原记忆清理器基础上加入实验功能：拦截主聊天请求并注入测试记忆，用于验证插件自建库能否进入 Roche input。",
   "author": "Ranni & ChatGPT",
-  "entry": "https://raw.githubusercontent.com/EZIO9103/test/refs/heads/main/plugin.js",
+  "entry": "https://raw.githubusercontent.com/EZIO9103/roche-memory-token-cleaner/main/plugin.js",
   "hash": "",
   "permissions": [
     "memory:read",
